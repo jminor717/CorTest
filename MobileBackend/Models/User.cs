@@ -16,6 +16,9 @@ namespace MobileBackend.Models {
 
         [ForeignKey("Instrument")]
         public virtual List<Instrument> AcessableInstruments { get; set; }
+
+        [ForeignKey("RaisedNotification")]
+        public virtual List<RaisedNotification> UnseenNotificcations { get; set; }
         //public IEnumerable<int> AcessableInstrumentIDS { get; set; }
 
     }

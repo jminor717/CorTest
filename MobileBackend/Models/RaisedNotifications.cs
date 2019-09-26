@@ -6,12 +6,13 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace MobileBackend.Models {
-    public class Instrument {
+    public class RaisedNotification {
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
-        public Guid UUID { get; set; }
-        public string Adress { get; set; }
+        public Guid NotificationId { get; set; }
+        public DateTimeOffset When { get; set; }
+
+        [ForeignKey("Instrument")]
+        public virtual Instrument originatingInstrument { get; set; }
     }
 }

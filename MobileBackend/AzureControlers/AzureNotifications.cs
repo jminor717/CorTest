@@ -1,5 +1,6 @@
 ﻿using Microsoft.Azure.NotificationHubs;
 using MobileBackend.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,11 @@ namespace MobileBackend.AzureControlers {
 
 
     public class FCMnotificationTemplate {
-
+        public data data=new data();
+    }
+    public class data {
+        public string message = "";
+       // public string Title = "";
     }
 
     public class AzureNotifications {
@@ -25,6 +30,10 @@ namespace MobileBackend.AzureControlers {
         }
 
         public async void sendToUsersbyID(device[] devices, string title, string body) {
+            FCMnotificationTemplate androidnoty = new FCMnotificationTemplate();
+            androidnoty.data.message = "{ title:" + title + ",body:" + body + ",}";//title + " ;; " + 
+            //androidnoty.data2.title = title;
+            string androidString = JsonConvert.SerializeObject(androidnoty);//"{\"data\":{\"message\":\"{ \"title\":" + title + ",\"body\":" + body + "}\"}}";
             List<string> androidDevices = new List<string>();
             List<string> iOSDevices = new List<string>();
             foreach (device dev in devices) {
@@ -36,7 +45,7 @@ namespace MobileBackend.AzureControlers {
 
             }
             if (androidDevices.Count > 0) {
-                var outcomeFcmByTag = await notificationhub.SendFcmNativeNotificationAsync(FcmSampleNotificationContent, androidDevices);
+                var outcomeFcmByTag = await notificationhub.SendFcmNativeNotificationAsync(androidString, androidDevices);//JsonConvert.SerializeObject(androidnoty)
                 // var fcmTagOutcomeDetails = await WaitForThePushStatusAsync("FCM Tags", notificationhub, outcomeFcmByTag);
                 //PrintPushOutcome("FCM Tags", fcmTagOutcomeDetails, fcmTagOutcomeDetails.FcmOutcomeCounts);
             }

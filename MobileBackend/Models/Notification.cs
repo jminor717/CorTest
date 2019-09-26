@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace MobileBackend.Models {
     /// <summary>
     /// list of notifications users can subscribe to based on instrument and type of alert/ warning
+    /// these are not actual notificatos from an instrument but a list of all notifications that can come from an instrument
     /// </summary>
     public class Notification {
         [Key]

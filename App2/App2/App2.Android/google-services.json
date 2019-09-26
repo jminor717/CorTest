@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "718414302202",
+    "firebase_url": "https://azure-push-cor-test.firebaseio.com",
+    "project_id": "azure-push-cor-test",
+    "storage_bucket": "azure-push-cor-test.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:718414302202:android:0f0c4ef6142ca28def7243",
+        "android_client_info": {
+          "package_name": "com.BDX.CORMonitor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "718414302202-fnsp2t6thj6on1dl77tcsinscccup916.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxC4uUxQbVdYGOcSrsB_ZWzacn0fstzhg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "718414302202-fnsp2t6thj6on1dl77tcsinscccup916.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

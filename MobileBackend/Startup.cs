@@ -12,9 +12,13 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using MobileBackend.Models;
+using System.Threading;
 
 namespace MobileBackend {
     public class Startup {
+        private instrumentMonitorRoutirn monitor = new instrumentMonitorRoutirn();
+        private Thread monitorThread;
+
         public Startup(IConfiguration configuration) {
             Configuration = configuration;
         }
@@ -25,6 +29,13 @@ namespace MobileBackend {
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
+            try {
+                monitorThread = new Thread(new ThreadStart( monitor.runer));
+                monitorThread.Start();
+            }
+            catch {
+                Console.WriteLine("monitor thread failed to start");
+            }
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
             services.AddDbContext<MobileBackendContext>(options =>

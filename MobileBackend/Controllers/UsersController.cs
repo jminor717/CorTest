@@ -137,7 +137,7 @@ namespace MobileBackend.Controllers {
            // List<string> user = new List<string>();
            // user.Add("device:" + DeviceID);
 
-            azureComunications.sendToUsersbyID(user.devices.ToArray(), "", "");
+            azureComunications.sendToUsersbyID(user.devices.ToArray(), "this is a test alert", "Alert");
 
             return NoContent();
         }

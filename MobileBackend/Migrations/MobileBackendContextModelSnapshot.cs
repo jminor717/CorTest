@@ -19,39 +19,6 @@ namespace MobileBackend.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MobileBackend.Models.DBUser", b =>
-                {
-                    b.Property<Guid>("UUID")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int?>("User");
-
-                    b.Property<string>("userName");
-
-                    b.HasKey("UUID");
-
-                    b.HasIndex("User");
-
-                    b.ToTable("DBUser");
-                });
-
-            modelBuilder.Entity("MobileBackend.Models.Instrument", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<Guid?>("Instrument");
-
-                    b.Property<Guid>("UUID");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("Instrument");
-
-                    b.ToTable("Instrument");
-                });
-
             modelBuilder.Entity("MobileBackend.Models.Notification", b =>
                 {
                     b.Property<int>("ID")
@@ -71,61 +38,6 @@ namespace MobileBackend.Migrations
                     b.HasKey("ID");
 
                     b.ToTable("Notification");
-                });
-
-            modelBuilder.Entity("MobileBackend.Models.RegisteredUsers", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("NotificationInstrumentID");
-
-                    b.Property<int>("UserID");
-
-                    b.HasKey("ID");
-
-                    b.ToTable("RegisteredUsers");
-                });
-
-            modelBuilder.Entity("MobileBackend.Models.device", b =>
-                {
-                    b.Property<int>("ID")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Platform");
-
-                    b.Property<Guid?>("device");
-
-                    b.Property<string>("notificationHubRegistration");
-
-                    b.HasKey("ID");
-
-                    b.HasIndex("device");
-
-                    b.ToTable("device");
-                });
-
-            modelBuilder.Entity("MobileBackend.Models.DBUser", b =>
-                {
-                    b.HasOne("MobileBackend.Models.Notification")
-                        .WithMany("RegisteredUsers")
-                        .HasForeignKey("User");
-                });
-
-            modelBuilder.Entity("MobileBackend.Models.Instrument", b =>
-                {
-                    b.HasOne("MobileBackend.Models.DBUser")
-                        .WithMany("AcessableInstruments")
-                        .HasForeignKey("Instrument");
-                });
-
-            modelBuilder.Entity("MobileBackend.Models.device", b =>
-                {
-                    b.HasOne("MobileBackend.Models.DBUser")
-                        .WithMany("devices")
-                        .HasForeignKey("device");
                 });
 #pragma warning restore 612, 618
         }

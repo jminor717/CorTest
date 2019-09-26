@@ -23,5 +23,7 @@ namespace MobileBackend.Models
         public DbSet<MobileBackend.Models.device> device { get; set; }
 
         public DbSet<MobileBackend.Models.Instrument> Instrument { get; set; }
+
+        public DbSet<MobileBackend.Models.RaisedNotification> RaisedNotification { get; set; }
     }
 }
