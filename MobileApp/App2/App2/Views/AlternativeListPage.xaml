@@ -1,7 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="App2.Views.AlternativeListPage">
-    <StackLayout Spacing="6" x:Name="EntryFieldsStack">
-        <!--Currently this is empty. Children are added in the code behing after loading the xml file from th e cloud-->
-    </StackLayout>
-</ContentPage>
